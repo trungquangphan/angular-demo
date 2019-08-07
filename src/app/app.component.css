@@ -1,0 +1,8 @@
+.app-component {
+    border: 2px pink solid;
+    padding: 10px;
+}
+.list-name-component {
+    margin-top: 50px;
+    border: 2px yellow solid;
+}
