@@ -1,0 +1,46 @@
+<form [formGroup]="profileForm" (submit)="onSubmitForm()">
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input  formControlName="email" type="email" class="form-control" id="email"
+            aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input formControlName="username" type="text" class="form-control" id="username"
+            placeholder="Username">
+
+        <div *ngIf="username.invalid && username.touched" class="alert alert-danger">
+            <p *ngIf="username.errors?.required" > Username is required</p>
+            <p *ngIf="username.errors?.forbiddenUsername">
+                Username can not be 'codegym'
+            </p>
+        </div>
+
+
+    </div>
+    <div class="form-check">
+        <input formControlName="check" type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <div formGroupName="passwordGroup">
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input formControlName="password" type="password" class="form-control" id="password"
+                placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm password</label>
+            <input formControlName="confirmPassword" type="password" class="form-control" id="confirmPassword"
+                placeholder="Confirm password">
+        </div>
+
+        <div *ngIf="passwordGroup.invalid && passwordGroup.touched" class="alert alert-danger">
+            <p *ngIf="passwordGroup.errors?.passwordNotMatch">
+                Password does not match
+            </p>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
